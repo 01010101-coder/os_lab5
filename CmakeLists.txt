@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.10)
+project(marker_sync)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+include_directories(${CMAKE_SOURCE_DIR})
+
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(Server src/server.cpp)
+target_include_directories(Server PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+add_executable(Client src/client.cpp)
+target_include_directories(Client PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
+
+add_executable(tests src/tests.cpp)
+target_link_libraries(tests gtest gtest_main)
+
+include(GoogleTest)
+gtest_discover_tests(tests)

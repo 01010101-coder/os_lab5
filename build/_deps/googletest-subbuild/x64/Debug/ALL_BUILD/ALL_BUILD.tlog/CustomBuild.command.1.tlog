@@ -1,0 +1,10 @@
+^C:\USERS\37529\ONEDRIVE\РАБОЧИЙ СТОЛ\OS\LAB_5\BUILD\_DEPS\GOOGLETEST-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/37529/OneDrive/Рабочий стол/OS/Lab_5/build/_deps/googletest-subbuild" "-BC:/Users/37529/OneDrive/Рабочий стол/OS/Lab_5/build/_deps/googletest-subbuild" --check-stamp-file "C:/Users/37529/OneDrive/Рабочий стол/OS/Lab_5/build/_deps/googletest-subbuild/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
